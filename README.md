@@ -1,24 +1,9 @@
-# new_callendar_app
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # New_Flutter_Callendar_App
 
 
-# Enum for date filters.
-# This is used to create the Filter buttons and categoring the logic.
+## Enum for date filters.
+## This is used to create the Filter buttons and categoring the logic.
 ```dart
 
 enum DateFilters {
@@ -35,8 +20,7 @@ enum DateFilters {
 
 ```
 
-
-# Constructor class to create date range.
+## Constructor class to create date range.
 ```dart
 
 class DateRange {
@@ -48,7 +32,7 @@ class DateRange {
 
 ```
 
-# Callendar implementation.
+## Callendar implementation.
 ```dart
 
 class Calendar extends StatefulWidget {
@@ -63,6 +47,34 @@ class CalendarState extends State<Calendar> {
     this.currentStartDate = DateTime.now();
     selectedFilter = DateFilters.lastMonth;
   }
+
+  var cusTomStartDate;
+  var customEndDate;
+
+  bool iscusTomStartDate;
+  bool iscustomEndDate;
+
+  String text = "", displayResult = "";
+  // Default selection is this year filter.
+  var selectedFilter;
+  // start and end date shown on dispay
+  DateTime currentStartDate, currentEndDate;
+
+  var dateRangeStack = StackData();
+
+//--------------------------------
+  var formatter = new DateFormat('dd MMM yyyy');
+
+  bool isRightButtonVisible = false;
+  bool isCustomEnabled = false;
+  bool isStartDatePicker = false;
+  bool isEndDatePicker = false;
+
+  ```
+
+  
+## Functions.
+```dart
 
   filterTitle(DateFilters filter) {
     switch (filter) {
@@ -89,27 +101,6 @@ class CalendarState extends State<Calendar> {
     }
   }
 
-  var cusTomStartDate;
-  var customEndDate;
-
-  bool iscusTomStartDate;
-  bool iscustomEndDate;
-
-  String text = "", displayResult = "";
-  // Default selection is this year filter.
-  var selectedFilter;
-  // start and end date shown on dispay
-  DateTime currentStartDate, currentEndDate;
-
-  var dateRangeStack = StackData();
-
-//--------------------------------
-  var formatter = new DateFormat('dd MMM yyyy');
-
-  bool isRightButtonVisible = false;
-  bool isCustomEnabled = false;
-  bool isStartDatePicker = false;
-  bool isEndDatePicker = false;
 
   getSelectedDateRange() {
      return DateRange(this.currentStartDate, this.currentEndDate);
@@ -281,7 +272,12 @@ class CalendarState extends State<Calendar> {
     });
   }
 
-  //-----------------------------------
+  ```
+
+
+## build Widgets
+```dart
+
   @override
   Widget build(BuildContext context) {
     return _buildMainContainer();
